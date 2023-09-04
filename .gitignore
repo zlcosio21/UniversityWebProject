@@ -5,3 +5,5 @@ UniversityWebProject/__pycache__
 UniversityWebApp/__init__.py
 UniversityWebApp/migrations
 UniversityWebApp/__pycache__
+
+db.sqlite3
