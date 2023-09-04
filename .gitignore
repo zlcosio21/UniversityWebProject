@@ -1,3 +1,7 @@
 UniversityWebProject/__init__.py
 UniversityWebProject/migrations
 UniversityWebProject/__pycache__
+
+UniversityWebApp/__init__.py
+UniversityWebApp/migrations
+UniversityWebApp/__pycache__
