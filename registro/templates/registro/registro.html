@@ -24,18 +24,8 @@
                     <p class="text-center small">Ingrese sus datos para crear una cuenta</p>
                   </div>
 
-                  <form class="row g-3 needs-validation" novalidate>
-                    <div class="col-12">
-                      <label for="yourName" class="form-label">Tu Nombre</label>
-                      <input type="text" name="name" class="form-control" id="yourName" required>
-                      <div class="invalid-feedback">Ingrese su nombre</div>
-                    </div>
-
-                    <div class="col-12">
-                      <label for="yourEmail" class="form-label">Tu Correo</label>
-                      <input type="email" name="email" class="form-control" id="yourEmail" required>
-                      <div class="invalid-feedback">Ingrese un correo valido</div>
-                    </div>
+                  <form class="row g-3 needs-validation" novalidate action="{% url 'registro' %}" method="post">
+                    {% csrf_token %}
 
                     <div class="col-12">
                       <label for="yourUsername" class="form-label">Nombre de Usuario</label>
@@ -46,6 +36,12 @@
                     </div>
 
                     <div class="col-12">
+                      <label for="yourEmail" class="form-label">Tu Correo</label>
+                      <input type="email" name="email" class="form-control" id="yourEmail" required>
+                      <div class="invalid-feedback">Ingrese un correo valido</div>
+                    </div>
+
+                    <div class="col-12">
                       <label for="yourPassword" class="form-label">Contraseña</label>
                       <input type="password" name="password" class="form-control" id="yourPassword" required>
                       <div class="invalid-feedback">Ingrese una contraseña</div>
@@ -53,7 +49,7 @@
 
                     <div class="col-12">
                       <label for="yourPassword" class="form-label">Confirmar contraseña</label>
-                      <input type="password" name="password" class="form-control" id="yourPassword" required>
+                      <input type="password" name="password_confirm" class="form-control" id="yourPassword" required>
                       <div class="invalid-feedback">La contraseña debe ser igual</div>
                     </div>
 
