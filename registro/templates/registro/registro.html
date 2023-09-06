@@ -24,7 +24,7 @@
                     <p class="text-center small">Ingrese sus datos para crear una cuenta</p>
                   </div>
 
-                  <form class="row g-3 needs-validation" novalidate action="{% url 'registro' %}" method="post">
+                  <form class="row g-3 needs-validation" action="{% url 'autenticacion' %}" method="post">
                     {% csrf_token %}
 
                     <div class="col-12">
