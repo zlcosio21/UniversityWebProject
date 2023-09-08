@@ -13,23 +13,19 @@ def registro(request):
 
         if password == password_confirm:
 
-            try:
-                user = User.objects.create_user(username=username, email=email, password=password)
-                user.save()
+            user = User.objects.create_user(username=username, email=email, password=password)
+            user.save()
 
-                if tipo_usuario == "estudiante":
-                    group = Group.objects.get(name="Estudiantes")
-                else:
-                    group = Group.objects.get(name="Profesores")
+            if tipo_usuario == "estudiante":
+                group = Group.objects.get(name="Estudiantes")
+            else:
+                group = Group.objects.get(name="Profesores")
 
-                user.groups.add(group)
-
-            except IntegrityError:
-                redirect("inicio")    
+            user.groups.add(group)    
 
             return redirect("inicio")
 
         else:
-            return redirect("inicio")
+            return redirect("registro")
 
     return render(request, "registro/registro.html")
