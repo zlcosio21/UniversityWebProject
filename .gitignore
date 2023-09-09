@@ -14,4 +14,8 @@ inicio_sesion/__init__.py
 inicio_sesion/migrations
 inicio_sesion/__pycache__
 
+carreras/__init__.py
+carreras/migrations
+carreras/__pycache__
+
 db.sqlite3
