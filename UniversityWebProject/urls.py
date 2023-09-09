@@ -22,5 +22,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include("UniversityWebApp.urls")),
     path('registro/', include("registro.urls")),
+    path('inicio_sesion/', include("inicio_sesion.urls")),
 
 ]
