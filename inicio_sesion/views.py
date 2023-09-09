@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 
 # Create your views here.
 def inicio_sesion(request):
@@ -18,3 +18,9 @@ def inicio_sesion(request):
             return redirect("inicio_sesion")
 
     return render(request, "inicio_sesion/inicio_sesion.html", {"user":request.user})
+
+
+def cerrar_sesion(request):
+    logout(request)
+
+    return redirect("inicio")

@@ -20,6 +20,7 @@ from inicio_sesion import views
 
 urlpatterns = [
     
-    path('', views.inicio_sesion, name="inicio_sesion")
+    path('', views.inicio_sesion, name="inicio_sesion"),
+    path('cerrar_sesion/', views.cerrar_sesion, name="cerrar_sesion"),
 
 ]
