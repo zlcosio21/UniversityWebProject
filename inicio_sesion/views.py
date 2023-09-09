@@ -17,4 +17,4 @@ def inicio_sesion(request):
         else:
             return redirect("inicio_sesion")
 
-    return render(request, "inicio_sesion/inicio_sesion.html")
+    return render(request, "inicio_sesion/inicio_sesion.html", {"user":request.user})
