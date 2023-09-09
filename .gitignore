@@ -10,4 +10,8 @@ registro/__init__.py
 registro/migrations
 registro/__pycache__
 
+inicio_sesion/__init__.py
+inicio_sesion/migrations
+inicio_sesion/__pycache__
+
 db.sqlite3
