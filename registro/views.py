@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User, Group
-from django.db.utils import IntegrityError
+from django.contrib.auth import login
 
 # Create your views here.
 def registro(request):
@@ -22,6 +22,7 @@ def registro(request):
                 group = Group.objects.get(name="Profesores")
 
             user.groups.add(group)    
+            login(request, user)
 
             return redirect("inicio")
 
