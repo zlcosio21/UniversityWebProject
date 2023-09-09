@@ -21,7 +21,6 @@ from UniversityWebApp import views
 urlpatterns = [
     
     path('', views.inicio, name="inicio"),
-    path('inicio_sesion/', views.inicio_sesion, name="inicio_sesion"),
     path('perfil_usuario/', views.perfil_usuario, name="perfil_usuario"),
 
 ]
