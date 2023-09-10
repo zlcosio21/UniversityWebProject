@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'UniversityWebApp',
     'registro',
     'inicio_sesion',
+    'blog',
 ]
 
 MIDDLEWARE = [
