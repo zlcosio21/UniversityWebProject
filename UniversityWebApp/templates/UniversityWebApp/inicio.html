@@ -3,27 +3,63 @@
 {% load static %}
 
 {% block content %}
-<br><br><br>
-<section id="posts" class="section-with-bg">
 
-  <div class="row" data-aos="fade-up" data-aos-delay="100">
+<main class="main" id="main">
 
-    {% for post in posts %}
+  {% if user.is_authenticated %}
 
-      <div class="col-lg-4 col-md-6">
-        <div class="posts">
-          <div class="posts-img">
-            <img src="{{post.imagen.url}}" alt="" class="img-fluid">
+    {% for group in user.groups.all %} 
+    
+      {% if group.name == "Estudiante" %}
+
+        <p>Vaya eres Estudiante</p>
+
+        <section id="posts" class="section-with-bg">
+          <div class="row" data-aos="fade-up" data-aos-delay="100">
+            {% for post in post_estudiante %}
+              <div class="col-lg-4 col-md-6">
+                <div class="posts">
+                  <div class="posts-img">
+                    <img src="{{post.imagen.url}}" alt="" class="img-fluid">
+                  </div>
+                    <h3>{{post.titulo}}</h3>
+                    <p>{{post.contenido}}</p>
+                </div>
+              </div>
+            {% endfor %}
           </div>
-          <h3>{{post.titulo}}</h3>
-          <p>{{post.contenido}}</p>
-        </div>
-      </div>
+        </section>
+
+      {% else %}
+
+        <p>Vaya eres Profesor</p>
+
+        <section id="posts" class="section-with-bg">
+          <div class="row" data-aos="fade-up" data-aos-delay="100">
+            {% for post in post_profesor %}
+              <div class="col-lg-4 col-md-6">
+                <div class="posts">
+                  <div class="posts-img">
+                    <img src="{{post.imagen.url}}" alt="" class="img-fluid">
+                  </div>
+                    <h3>{{post.titulo}}</h3>
+                    <p>{{post.contenido}}</p>
+                </div>
+              </div>
+            {% endfor %}
+          </div>
+        </section>
+
+      {% endif %}
 
     {% endfor %}
-  </div>
+      
+    {% else %}
 
-</div>
-</section>
+      <p>Logeate</p>
+
+  {% endif %}
+
+</main>
 
 {% endblock %}
