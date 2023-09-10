@@ -17,9 +17,9 @@ def registro(request):
             user.save()
 
             if tipo_usuario == "estudiante":
-                group = Group.objects.get(name="Estudiantes")
+                group = Group.objects.get(name="Estudiante")
             else:
-                group = Group.objects.get(name="Profesores")
+                group = Group.objects.get(name="Profesor")
 
             user.groups.add(group)    
             login(request, user)
