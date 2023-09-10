@@ -3,25 +3,27 @@
 {% load static %}
 
 {% block content %}
+<br><br><br>
+<section id="posts" class="section-with-bg">
 
-  <main id="main" class="main">
+  <div class="row" data-aos="fade-up" data-aos-delay="100">
 
-    <div class="pagetitle">
-      <h1>Inicio</h1>
-      <nav>
-        <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="inicio.html">#</a></li>
-              </ol>
-      </nav>
-    </div><!-- End Page Title -->
+    {% for post in posts %}
 
-    <section class="section dashboard">
-      <div class="row">
+      <div class="col-lg-4 col-md-6">
+        <div class="posts">
+          <div class="posts-img">
+            <img src="{{post.imagen.url}}" alt="" class="img-fluid">
+          </div>
+          <h3>{{post.titulo}}</h3>
+          <p>{{post.contenido}}</p>
+        </div>
+      </div>
 
-        <!-- Left side columns -->
-        <div class="col-lg-8">
-          <div class="row">
+    {% endfor %}
+  </div>
 
-  </main><!-- End #main -->
+</div>
+</section>
 
 {% endblock %}
