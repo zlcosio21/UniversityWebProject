@@ -18,4 +18,8 @@ carreras/__init__.py
 carreras/migrations
 carreras/__pycache__
 
+blog/__init__.py
+blog/migrations
+blog/__pycache__
+
 db.sqlite3
