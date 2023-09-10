@@ -286,3 +286,51 @@ h6 {
 .profile .profile-edit img {
   max-width: 120px;
 }
+
+
+
+#posts {
+  padding: 60px 60px;
+}
+
+#posts .hotel {
+  border: 1px solid #e0e5fa;
+  background: #fff;
+  margin-bottom: 30px;
+}
+
+#posts .posts:hover .posts-img img {
+  transform: scale(1.1);
+}
+
+#posts .posts-img {
+  overflow: hidden;
+  margin-bottom: 15px;
+}
+
+#posts .posts-img img {
+  transition: 0.3s ease-in-out;
+}
+
+#posts h3 {
+  font-weight: 600;
+  font-size: 20px;
+  margin-bottom: 5px;
+  padding: 0 20px;
+}
+
+#posts a {
+  color: #152b79;
+}
+
+#posts a:hover {
+  color: #f82249;
+}
+
+#posts p {
+  padding: 0 20px;
+  margin-bottom: 20px;
+  color: #060c22;
+  font-style: italic;
+  font-size: 15px;
+}
