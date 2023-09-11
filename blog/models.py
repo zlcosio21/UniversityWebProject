@@ -1,14 +1,15 @@
 from django.db import models
+from carreras.models import Carreras
 
 # Create your models here.
-class CategoriaCarrera(models.Model):
+class TipoUsuario(models.Model):
     nombre = models.CharField(max_length=50)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now_add=True)
 
     class meta:
-        verbose_name = 'categoria_carrera'
-        verbose_name_plural = 'categorias_carreras'
+        verbose_name = 'tipo_usuario'
+        verbose_name_plural = 'tipo_usuario'
 
     def __str__(self):
         return self.nombre
@@ -18,7 +19,8 @@ class Post(models.Model):
     contenido = models.CharField(max_length=50)
     imagen = models.ImageField(upload_to='blog', null=True, blank=True)
 
-    categorias = models.ManyToManyField(CategoriaCarrera)
+    categorias = models.ManyToManyField(TipoUsuario)
+    carrera = models.ForeignKey(Carreras, on_delete=models.CASCADE)
 
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now_add=True)

@@ -1,12 +1,12 @@
 from django.shortcuts import render
-from blog.models import Post, CategoriaCarrera
+from blog.models import Post, TipoUsuario
 
 # Create your views here.
 def inicio(request):
 
-    profesor = CategoriaCarrera.objects.get(id=1)
-    estudiante = CategoriaCarrera.objects.get(id=2)
-
+    estudiante = TipoUsuario.objects.get(id=1)
+    profesor = TipoUsuario.objects.get(id=2)
+    
     post_profesor = Post.objects.filter(categorias = profesor)
     post_estudiante = Post.objects.filter(categorias = estudiante)
 
