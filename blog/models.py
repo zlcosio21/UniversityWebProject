@@ -1,5 +1,5 @@
 from django.db import models
-from carreras.models import Carreras
+from carreras.models import Carrera
 
 # Create your models here.
 class TipoUsuario(models.Model):
@@ -20,7 +20,7 @@ class Post(models.Model):
     imagen = models.ImageField(upload_to='blog', null=True, blank=True)
 
     categorias = models.ManyToManyField(TipoUsuario)
-    carrera = models.ForeignKey(Carreras, on_delete=models.CASCADE)
+    carrera = models.ForeignKey(Carrera, on_delete=models.CASCADE)
 
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now_add=True)

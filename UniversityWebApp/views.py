@@ -1,10 +1,10 @@
 from django.shortcuts import render
 from blog.models import Post, TipoUsuario
-from carreras.models import Carreras
+from carreras.models import Carrera
 
 # Create your views here.
 def inicio(request):
-    carreras = Carreras.objects.all()
+    carreras = Carrera.objects.all()
     lista_carreras = []
 
     for carrera in carreras:
