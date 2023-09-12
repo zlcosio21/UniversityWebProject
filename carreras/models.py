@@ -18,3 +18,13 @@ class Semestre(models.Model):
     def __str__(self):
         return f"{self.carrera.nombre} - Semestre {self.numero}"
     
+class Materia(models.Model):
+    nombre = models.CharField(max_length=50, unique=True, null=False)
+    carrera = models.ForeignKey(Semestre, on_delete=models.CASCADE)
+    
+    class meta:
+        verbose_name = 'materia'
+        verbose_name_plural = 'materias'
+
+    def __str__(self):
+        return f"{self.nombre} - Carrera {self.carrera.carrera.nombre} - Semestre {self.carrera.numero}"
