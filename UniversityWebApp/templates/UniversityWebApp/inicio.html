@@ -24,6 +24,7 @@
                   </div>
                     <h3>{{post.titulo}}</h3>
                     <p>{{post.contenido}}</p>
+                    <a href="{% if post.carrera.nombre|lower in lista_carreras|lower %} {% url 'registro' %} {% endif %}"><p>Matricular</p></a>
                 </div>
               </div>
             {% endfor %}
