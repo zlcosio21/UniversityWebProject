@@ -19,3 +19,11 @@ class Semestre(models.Model):
 
     def __str__(self):
         return f"{self.carrera.nombre} - Semestre {self.numero}"
+    
+
+@receiver(post_save, sender=Carrera)
+def crear_semestres(sender, instance, created, **kwargs):
+    if created:
+        for i in range(1, 11):
+            num_semestre = i
+            Semestre.objects.create(numero=num_semestre, carrera=instance)
