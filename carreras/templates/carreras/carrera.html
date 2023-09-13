@@ -1,0 +1,20 @@
+<style> body {margin-left: 20px !important; /* Ajusta el valor según tus necesidades */}</style>
+
+{% extends "UniversityWebApp/base.html" %}
+
+{% load static %}
+
+{% block content %}
+    
+    <br><br><br><p>Te has matriculado a la carrera {{carrera_nombre}} </p>
+
+    <h3>Las materias que presentaras en la carrera de {{carrera_nombre}}</h3>
+    
+    <ul>{% for materia in materias_carrera %}
+
+        <li>{{materia.nombre}} Semestre {{materia.materia_perteneciente_a.numero}}</li>
+
+        {% endfor %}</ul>
+    
+
+{% endblock %}
