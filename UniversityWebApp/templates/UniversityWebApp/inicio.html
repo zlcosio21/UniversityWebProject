@@ -18,13 +18,13 @@
           <div class="row" data-aos="fade-up" data-aos-delay="100">
             {% for post in post_estudiante %}
               <div class="col-lg-4 col-md-6">
-                <div class="posts">
-                  <div class="posts-img">
-                    <img src="{{post.imagen.url}}" alt="" class="img-fluid">
+                <div class="posts" style="background-color:DarkTurquoise; color: white;">
+                  <div class="posts-img" >
+                    <img src="{{post.imagen.url}}" alt="" class="img-fluid" style="width: 500px; height: 250px;">
                   </div>
                     <h3>{{post.titulo}}</h3>
-                    <p>{{post.contenido}}</p>
-                    <a href="{% url 'matricular_carrera' post.carrera.nombre %}"><p>Matricular</p></a>
+                    <p style="color: white;">{{post.contenido}}</p>
+                    <a href="{% url 'matricular_carrera' post.carrera.nombre %}"><p style="color: white;">Matricular</p></a><br>
                 </div>
               </div>
             {% endfor %}
