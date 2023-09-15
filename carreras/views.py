@@ -44,7 +44,7 @@ def especializarse(request, materia_nombre):
         user = request.user
 
         materia_especializada = user.salones_profesor.filter(materia=materia).exists()
-        ya_especializado = user.salones_profesor.filter(materia=materia).exists()
+        ya_especializado = user.salones_profesor.exists()
         
         if materia_especializada:
 
