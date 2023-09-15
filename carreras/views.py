@@ -34,3 +34,31 @@ def matricular_carrera(request, carrera_nombre):
         
     except carrera.DoesNotExist:
         return redirect('inicio')
+    
+
+def especializarse(request, materia_nombre):
+    try:
+
+        materia = Materia.objects.get(nombre__iexact=materia_nombre)
+        salones = Salon.objects.filter(materia=materia, profesor=None)
+        user = request.user
+
+        materia_especializada = user.salones_profesor.filter(materia=materia).exists()
+        ya_especializado = user.salones_profesor.filter(materia=materia).exists()
+        
+        if materia_especializada:
+
+            return render(request, "carreras/carrera.html")
+
+        elif ya_especializado:
+            return render(request, "carreras/ya_matriculado.html")
+        
+        else:
+            for salon in salones:
+                salon.profesor = user
+                salon.save()
+
+            return render(request, "carreras/carrera.html")
+        
+    except Materia.DoesNotExist:
+        return redirect('inicio')
