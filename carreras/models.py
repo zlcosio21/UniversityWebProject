@@ -15,6 +15,7 @@ class Carrera(models.Model):
     
 class Semestre(models.Model):
     numero = models.PositiveIntegerField()
+    estudiantes = models.ManyToManyField(User, related_name='semestre_estudiantes', blank=True, limit_choices_to={'groups__name': 'Estudiante'})
     carrera = models.ForeignKey(Carrera, on_delete=models.CASCADE)
 
     def __str__(self):
