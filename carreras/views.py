@@ -9,7 +9,6 @@ def matricular_carrera(request, carrera_nombre):
         estudiantes_semestre = Semestre.objects.get(carrera=carrera, numero=1)
 
         materias_carrera = Materia.objects.filter(semestre__carrera=carrera, semestre__numero=1)
-
         salones_carrera = Salon.objects.filter(semestre__carrera=carrera, semestre__numero=1)
 
         user = request.user
