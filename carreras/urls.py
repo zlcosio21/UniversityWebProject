@@ -21,5 +21,6 @@ from carreras import views
 urlpatterns = [
     
     path('matricular/<str:carrera_nombre>', views.matricular_carrera, name="matricular_carrera"),
+    path('especializar/<str:materia_nombre>', views.especializarse, name="especializarse"),
 
 ]
