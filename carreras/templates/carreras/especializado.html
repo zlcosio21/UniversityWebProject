@@ -1,0 +1,28 @@
+<style> p,h1,h2,h3,h4,h5,h6,ul {margin-left: 80px;} img {width: 450px; height: 1px;} </style>
+
+{% extends "UniversityWebApp/base.html" %}
+
+{% load static %}
+
+{% block content %}
+    
+    <br><br><br><p>Te has especializado en la materia {{materia.nombre}} <br> Los salones los cuales estaras a cargo en la materia de {{materia.nombre}} son:</p>
+
+    <section id="posts" class="section-with-bg">
+        <div class="row" data-aos="fade-up" data-aos-delay="100" >
+          {% for salon in salones_profesor %}
+            <div class="col-lg-4 col-md-6">
+              <div class="posts"  style="background-color:DarkTurquoise; color: white; margin-bottom: 20px;">
+                <div class="posts-img">
+                  <img src="{% static 'assets/img/imagen_salones.jpg' %}" alt="sin imagen" class="img-fluid">
+                </div>
+                  <h3 style="color: white; margin-left: 0px">Salon {{salon.nombre}} - {{salon.materia.nombre}}</h3>
+                  <p style="color: white; margin-left: 0px">Semestre</p><br>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+    </section>
+    
+
+{% endblock %}
