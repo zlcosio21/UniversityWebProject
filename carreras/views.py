@@ -48,17 +48,22 @@ def especializarse(request, materia_nombre):
         
         if materia_especializada:
 
-            return render(request, "carreras/carrera.html")
+            salones_profesor = Salon.objects.filter(profesor=user)
+
+            return render(request, "carreras/especializado.html", {"salones_profesor":salones_profesor, "materia":materia})
 
         elif ya_especializado:
-            return render(request, "carreras/ya_matriculado.html")
+            return render(request, "carreras/ya_especializado.html")
         
         else:
+
             for salon in salones:
                 salon.profesor = user
                 salon.save()
 
-            return render(request, "carreras/carrera.html")
+            salones_profesor = Salon.objects.filter(profesor=user)
+
+            return render(request, "carreras/especializado.html", {"salones_profesor":salones_profesor, "materia":materia})
         
     except Materia.DoesNotExist:
         return redirect('inicio')
