@@ -1,11 +1,13 @@
 from django.shortcuts import render, redirect
-from carreras.models import Carrera, Materia, Salon
+from carreras.models import Carrera, Materia, Salon, Semestre
 
 # Create your views here.
 def matricular_carrera(request, carrera_nombre):
     try:
 
         carrera = Carrera.objects.get(nombre__iexact=carrera_nombre)
+        estudiantes_semestre = Semestre.objects.get(carrera=carrera, numero=1)
+
         materias_carrera = Materia.objects.filter(semestre__carrera=carrera, semestre__numero=1)
 
         salones_carrera = Salon.objects.filter(semestre__carrera=carrera, semestre__numero=1)
@@ -25,6 +27,9 @@ def matricular_carrera(request, carrera_nombre):
         else:
             carrera.estudiantes.add(user)
             carrera.save()
+
+            estudiantes_semestre.estudiantes.add(user)
+            estudiantes_semestre.save()
 
             return render(request, "carreras/carrera.html", {"carrera_nombre": carrera_nombre, "materias_carrera":materias_carrera, "salones_carrera":salones_carrera})
         
