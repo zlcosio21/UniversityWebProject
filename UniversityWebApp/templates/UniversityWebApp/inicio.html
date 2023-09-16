@@ -9,10 +9,14 @@
   {% if user.is_authenticated %}
 
     {% for group in user.groups.all %} 
+
+      <h2 style="margin-left: 60px;">Bienvenido {{request.user}}</h2>
     
       {% if group.name == "Estudiante" %}
 
-        <p>Vaya eres Estudiante</p>
+      <p style="margin-left: 60px;">Vaya, eres estudiante. ¡Estás en el camino correcto para alcanzar tus metas académicas y profesionales! En nuestra universidad, te ofrecemos una amplia gama de emocionantes carreras para elegir. A continuación, encontrarás algunas opciones que podrían interesarte:</p>
+
+      <p style="margin-left: 60px;">¡Estas son solo algunas de las muchas oportunidades que te esperan! No dudes en explorar estas opciones y tomar el siguiente paso hacia tu futuro. Haz clic en "Matricular" para obtener más información sobre la carrera que te interesa y comenzar tu viaje académico. ¡Estamos aquí para ayudarte en cada paso del camino!</p>
 
         <section id="posts" class="section-with-bg">
           <div class="row" data-aos="fade-up" data-aos-delay="100">
@@ -33,7 +37,11 @@
 
       {% else %}
 
-        <p>Vaya eres Profesor</p>
+      <p style="margin-left: 60px;">¡Hola, estimado profesor!</p>
+
+      <p style="margin-left: 60px;">En nuestra universidad, valoramos a los educadores comprometidos como tú que desean llevar su experiencia y conocimiento al siguiente nivel. Te animamos a considerar la posibilidad de especializarte en una carrera que apasione tu enseñanza y te permita influir de manera significativa en la próxima generación de profesionales.</p>
+
+      <p style="margin-left: 60px;">Te ofrecemos la oportunidad de explorar las siguientes opciones de especialización:</p>
 
         <section id="posts" class="section-with-bg">
           <div class="row" data-aos="fade-up" data-aos-delay="100">
