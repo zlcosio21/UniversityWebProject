@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
+from django.contrib import messages
 
 # Create your views here.
 def inicio_sesion(request):
@@ -15,7 +16,7 @@ def inicio_sesion(request):
             return redirect("inicio")
         
         else:
-            return redirect("inicio_sesion")
+            messages.error(request, "La cuenta no existe. Ingrese los datos correctamente")
 
     return render(request, "inicio_sesion/inicio_sesion.html", {"user":request.user})
 

@@ -44,6 +44,11 @@
 
                     <div class="col-12">
                       <button class="btn btn-primary w-100" type="submit">Iniciar Sesion</button>
+                      {% if messages %} <div class="text-danger" style="margin-left: 10px; font-size: 16px;">
+                        {% for mensajes in messages %}
+                          {{mensajes}}
+                        {% endfor %}</div>
+                      {% endif %}
                     </div>
                     <div class="col-12">
                       <p class="small mb-0">No tienes una cuenta? <a href="{% url 'registro' %}">Crea una cuenta</a></p>
