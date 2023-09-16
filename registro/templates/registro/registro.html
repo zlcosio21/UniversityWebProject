@@ -30,9 +30,15 @@
                     <div class="col-12">
                       <label for="yourUsername" class="form-label">Nombre de Usuario</label>
                       <div class="input-group has-validation">
-                        <input type="text" name="username" class="form-control" id="yourUsername" required>
+                          <input type="text" name="username" class="form-control" id="yourUsername" required>
                       </div>
+                        {% for message in messages %}
+                          {% if 'username_error' in message.tags %}<div class="text-danger" style="margin-left: 10px; font-size: 16px;">
+                              {{message}}  </div>
+                          {% endif %}
+                        {% endfor %}
                     </div>
+                  
 
                     <div class="col-12">
                       <label for="yourEmail" class="form-label">Tu Correo</label>
@@ -42,11 +48,21 @@
                     <div class="col-12">
                       <label for="yourPassword" class="form-label">Contraseña</label>
                       <input type="password" name="password" class="form-control" id="yourPassword" required>
+                      {% for message in messages %}
+                        {% if 'error_characters' in message.tags %} <div class="text-danger" style="margin-left: 10px; font-size: 16px;"> 
+                          {{ message }}</div>
+                        {% endif %}
+                      {% endfor %}
                     </div>
-
+                    
                     <div class="col-12">
                       <label for="yourPassword" class="form-label">Confirmar contraseña</label>
                       <input type="password" name="password_confirm" class="form-control" id="yourPassword" required>
+                      {% for message in messages %}
+                          {% if 'password_error' in message.tags %} <div class="text-danger" style="margin-left: 10px; font-size: 16px;"> 
+                              {{ message }}</div>
+                          {% endif %}
+                      {% endfor %}
                     </div>
 
                     <div class="col-12">
