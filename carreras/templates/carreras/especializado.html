@@ -1,4 +1,4 @@
-<style> p,h1,h2,h3,h4,h5,h6,ul {margin-left: 80px;} img {width: 450px; height: 1px;} </style>
+<style> p,h1,h2,h3,h4,h5,h6,ul {margin-left: 60px;} img {width: 450px; height: 1px;} </style><br><br><br>
 
 {% extends "UniversityWebApp/base.html" %}
 
@@ -6,7 +6,9 @@
 
 {% block content %}
     
-    <br><br><br><p>Te has especializado en la materia {{materia.nombre}} <br> Los salones los cuales estaras a cargo en la materia de {{materia.nombre}} son:</p>
+  <p>Felicitaciones, has tomado una decisión importante. Te has especializado en la materia {{materia.nombre}} y ahora estarás a cargo de guiar a los estudiantes en su camino hacia el conocimiento en este emocionante campo.</p>
+
+  <p>Los salones bajo tu supervisión en la materia de {{ materia.nombre }} son los siguientes:</p>
 
     <section id="posts" class="section-with-bg">
         <div class="row" data-aos="fade-up" data-aos-delay="100" >
