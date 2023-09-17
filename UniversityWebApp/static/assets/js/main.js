@@ -319,3 +319,13 @@
   }
 
 })();
+
+document.addEventListener("DOMContentLoaded", function () {
+  var profileEditButton = document.getElementById("profile-edit-button");
+  profileEditButton.click();
+});
+
+document.addEventListener("DOMContentLoaded", function () {
+  var PasswordEdit = document.getElementById("password-edit");
+  PasswordEdit.click();
+});
