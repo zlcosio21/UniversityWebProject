@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from carreras.models import Carrera, Materia, Salon, Semestre
+from django.contrib import messages
 
 # Create your views here.
 def matricular_carrera(request, carrera_nombre):
@@ -15,13 +16,18 @@ def matricular_carrera(request, carrera_nombre):
         
         carrera_matriculada = user.carreras_matriculadas.filter(id=carrera.id).exists()
         ya_esta_matriculado = user.carreras_matriculadas.exists()
-        
+
         if carrera_matriculada:
             
             return render(request, "carreras/carrera.html", {"carrera_nombre": carrera_nombre, "materias_carrera":materias_carrera, "salones_carrera":salones_carrera})
-
+        
         elif ya_esta_matriculado:
-            return render(request, "carreras/ya_matriculado.html", {"carrera_nombre":carrera_nombre})
+
+            carrera_estudiante = Carrera.objects.get(estudiantes=user)
+
+            messages.error(request, f"Ya te encuentras matriculado en la carrera {carrera_estudiante}", extra_tags="ya_matriculado_error")
+            
+            return redirect("inicio")
         
         else:
             carrera.estudiantes.add(user)
@@ -31,6 +37,8 @@ def matricular_carrera(request, carrera_nombre):
             estudiantes_semestre.save()
 
             return render(request, "carreras/carrera.html", {"carrera_nombre": carrera_nombre, "materias_carrera":materias_carrera, "salones_carrera":salones_carrera})
+        
+        
         
     except carrera.DoesNotExist:
         return redirect('inicio')
