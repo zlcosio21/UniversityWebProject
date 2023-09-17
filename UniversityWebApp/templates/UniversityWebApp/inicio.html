@@ -48,6 +48,18 @@
       <p style="margin-left: 60px;">En nuestra universidad, valoramos a los educadores comprometidos como tú que desean llevar su experiencia y conocimiento al siguiente nivel. Te animamos a considerar la posibilidad de especializarte en una carrera que apasione tu enseñanza y te permita influir de manera significativa en la próxima generación de profesionales.</p>
 
       <p style="margin-left: 60px;">Te ofrecemos la oportunidad de explorar las siguientes opciones de especialización:</p>
+      
+      {% for message in messages %}
+        {% if 'ya_especializado_error' in message.tags %} <div class="text-danger" style="text-align: center;"> 
+          {{ message }}</div>
+        {% endif %}
+      {% endfor %}
+
+      {% for message in messages %}
+        {% if 'no_salon' in message.tags %} <div class="text-danger" style="text-align: center;"> 
+          {{ message }}</div>
+        {% endif %}
+      {% endfor %}
 
         <section id="posts" class="section-with-bg">
           <div class="row" data-aos="fade-up" data-aos-delay="100">
