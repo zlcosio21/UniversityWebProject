@@ -23,5 +23,7 @@ from django.conf.urls.static import static
 urlpatterns = [
     
     path('', views.perfil_usuario, name="perfil_usuario"),
+    path('editar_perfil/', views.editar_perfil, name="editar_perfil"),
+    path('cambiar_password/', views.cambiar_password, name="cambiar_password"),
 
 ]
