@@ -22,4 +22,8 @@ blog/__init__.py
 blog/migrations
 blog/__pycache__
 
+perfil_usuario/__init__.py
+perfil_usuario/migrations
+perfil_usuario/__pycache__
+
 db.sqlite3
