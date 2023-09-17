@@ -23,7 +23,6 @@ from django.conf.urls.static import static
 urlpatterns = [
     
     path('', views.inicio, name="inicio"),
-    path('perfil_usuario/', views.perfil_usuario, name="perfil_usuario"),
 
 ]
 

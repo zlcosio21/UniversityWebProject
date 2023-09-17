@@ -16,7 +16,3 @@ def inicio(request):
         return redirect("registro")
 
     return render(request, "UniversityWebApp/inicio.html", {"post_profesor":post_profesor, "post_estudiante":post_estudiante})
-
-def perfil_usuario(request):
-
-    return render(request, "UniversityWebApp/perfil_usuario.html")
