@@ -13,6 +13,6 @@ def inicio(request):
     user = request.user
 
     if not user.is_authenticated:
-        return redirect("registro")
+        return redirect("inicio_sesion")
 
     return render(request, "UniversityWebApp/inicio.html", {"post_profesor":post_profesor, "post_estudiante":post_estudiante})
