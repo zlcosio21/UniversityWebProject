@@ -2,8 +2,10 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from django.contrib import messages
 from django.contrib.auth import login
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
+@login_required
 def perfil_usuario(request):
 
     user = User.objects.get(username=request.user)
@@ -11,10 +13,12 @@ def perfil_usuario(request):
 
     return render(request, "perfil_usuario/perfil_usuario.html", {"tipo_usuario":tipo_usuario})
 
+@login_required
 def editar_perfil(request):
     
     return render(request, "perfil_usuario/editar_perfil.html", {"active_tab":"editar_perfil"})
 
+@login_required
 def cambiar_password(request):
 
     if request.method == "POST":
