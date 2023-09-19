@@ -53,7 +53,8 @@
             <div class="tab-pane fade profile-edit pt-3" id="profile-edit">
 
               <!-- Profile Edit Form -->
-              <form>
+              <form action="{% url 'editar_perfil' %}" method="post" class="row g-3 needs-validation">
+                {% csrf_token %}
 
                 <div class="row mb-3">
                   <label for="profileImage" class="col-md-4 col-lg-3 col-form-label">Imagen de perfil</label>
@@ -69,9 +70,19 @@
                 </div>
 
                 <div class="row mb-3">
-                  <label for="fullName" class="col-md-4 col-lg-3 col-form-label">Nombre Completo</label>
+                  <label for="fullName" class="col-md-4 col-lg-3 col-form-label">Nombre de Usuario</label>
                   <div class="col-md-8 col-lg-9">
                     <input name="username" type="text" class="form-control" id="fullName">
+                    {% for message in messages %}
+                      {% if 'username_error' in message.tags %}<div class="text-danger" style="margin-left: 10px; font-size: 16px;">
+                        {{message}}  </div>
+                      {% endif %}
+                    {% endfor %}
+                    {% for message in messages %}
+                      {% if 'username_existe_error' in message.tags %}<div class="text-danger" style="margin-left: 10px; font-size: 16px;">
+                        {{message}}  </div>
+                      {% endif %}
+                    {% endfor %}
                   </div>
                 </div>
 
@@ -92,12 +103,24 @@
                 <div class="row mb-3">
                   <label for="Email" class="col-md-4 col-lg-3 col-form-label">Correo</label>
                   <div class="col-md-8 col-lg-9">
-                    <input name="email" type="email" class="form-control" id="Email" value="        ">
+                    <input name="email" type="email" class="form-control" id="Email">
+                  </div>
+                </div>
+
+                <div class="row mb-3">
+                  <label for="currentPassword" class="col-md-4 col-lg-3 col-form-label">Contraseña actual</label>
+                  <div class="col-md-8 col-lg-9">
+                    <input name="password" type="password" class="form-control" id="currentPassword">
+                    {% for message in messages %}
+                      {% if 'password_novalida' in message.tags %}<div class="text-danger" style="margin-left: 10px; font-size: 16px;">
+                        {{message}}  </div>
+                      {% endif %}
+                    {% endfor %}
                   </div>
                 </div>
 
                 <div class="text-center">
-                  <button type="submit" class="btn btn-primary" method="post">Guardar Cambios</button>
+                  <a href="{% url 'editar_perfil' %}"><button type="submit" class="btn btn-primary" method="post">Guardar Cambios</button></a>
                 </div>
 
               </form><!-- End Profile Edit Form -->
