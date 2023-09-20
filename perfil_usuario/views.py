@@ -16,7 +16,14 @@ def perfil_usuario(request):
     user = User.objects.get(username=request.user)
     tipo_usuario = user.groups.all()
 
-    return render(request, "perfil_usuario/perfil_usuario.html", {"tipo_usuario":tipo_usuario})
+    datos_extra = DatosExtra.objects.get(user=user)
+
+    info_usuario = datos_extra.info_user
+    telefono = datos_extra.numero_telefono
+
+    
+
+    return render(request, "perfil_usuario/perfil_usuario.html", {"tipo_usuario":tipo_usuario, "info_usuario":info_usuario, "telefono":telefono})
 
 @login_required
 def editar_perfil(request):
