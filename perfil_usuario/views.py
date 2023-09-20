@@ -4,10 +4,7 @@ from django.contrib import messages
 from django.contrib.auth import login
 from django.contrib.auth.decorators import login_required
 from perfil_usuario.models import DatosExtra
-
-def characters_error(request, variable):
-    if len(variable) < 8:
-        messages.error(request, "Debe contener minimo 8 caracteres", extra_tags="username_error")
+from validators import *
 
 # Create your views here.
 @login_required
@@ -20,8 +17,6 @@ def perfil_usuario(request):
 
     info_usuario = datos_extra.info_user
     telefono = datos_extra.numero_telefono
-
-    
 
     return render(request, "perfil_usuario/perfil_usuario.html", {"tipo_usuario":tipo_usuario, "info_usuario":info_usuario, "telefono":telefono})
 
@@ -36,17 +31,12 @@ def editar_perfil(request):
         password = request.POST.get("password")
 
         user = request.user
-
         password_valida = user.check_password(password)
-        username_existe = User.objects.filter(username=new_username).exclude(pk=user.pk).exists()
 
         characters_error(request, new_username)
-
-        if username_existe:
-            messages.error(request, "El nuevo nombre de usuario ya está en uso.", extra_tags="username_existe_error")
-
-        if not password_valida:
-            messages.error(request, "La contraña actual es incorrecta, ingrese nuevamente", extra_tags="password_novalida")
+        username_existe(request, new_username)
+        password_novalida(request, password)
+            
 
         if password_valida and not username_existe:
             user.username = new_username
