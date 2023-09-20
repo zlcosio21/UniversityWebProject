@@ -26,4 +26,4 @@ perfil_usuario/__init__.py
 perfil_usuario/migrations
 perfil_usuario/__pycache__
 
-db.sqlite3
+__pycache__
