@@ -13,10 +13,15 @@ def perfil_usuario(request):
     user = User.objects.get(username=request.user)
     tipo_usuario = user.groups.all()
 
-    datos_extra = DatosExtra.objects.get(user=user)
+    try:
 
-    info_usuario = datos_extra.info_user
-    telefono = datos_extra.numero_telefono
+        datos_extra = DatosExtra.objects.get(user=user)
+        info_usuario = datos_extra.info_user
+        telefono = datos_extra.numero_telefono
+
+    except DatosExtra.DoesNotExist:
+        info_usuario = "Sin agregar"
+        telefono = "Sin agregar"
 
     return render(request, "perfil_usuario/perfil_usuario.html", {"tipo_usuario":tipo_usuario, "info_usuario":info_usuario, "telefono":telefono})
 
