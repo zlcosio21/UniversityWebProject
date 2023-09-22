@@ -22,7 +22,7 @@
         <div class="card">
           <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
             <h2>{{request.user}}</h2>
-            <h3>{% for user in tipo_usuario %} {{user}} {% endfor %}</h3>
+            <h3>{% for groups in request.user.groups.all %} {{groups}} {% endfor %}</h3>
           </div>
         </div>
 
@@ -54,7 +54,7 @@
               <div class="tab-pane fade show active profile-overview" id="profile-overview">
 
                 <h5 class="card-title">Acerca de</h5>
-                <p class="small fst-italic">{{info_usuario}}</p>
+                <p class="col-lg-9 col-md-8" style="font-size: 16px;">{{info_usuario}}</p>
 
                 <h5 class="card-title">Detalles del Perfil</h5>
 
@@ -65,7 +65,7 @@
 
                 <div class="row">
                   <div class="col-lg-3 col-md-4 label">Ocupacion</div>
-                  <div class="col-lg-3 col-md-4 label">{% for user in tipo_usuario %} {{user}} {% endfor %}</div>
+                  <div class="col-lg-3 col-md-4 label">{% for groups in request.user.groups.all %} {{groups}} {% endfor %}</div>
                 </div>
 
                 <div class="row">
