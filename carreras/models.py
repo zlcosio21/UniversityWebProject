@@ -39,6 +39,7 @@ class Salon(models.Model):
     profesor = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, related_name='salones_profesor', blank=True, limit_choices_to={'groups__name': 'Profesor'})
     materia = models.ForeignKey(Materia, on_delete=models.CASCADE, null=False, default=1)
     semestre = models.ForeignKey(Semestre, on_delete=models.CASCADE, null=False)
+    imagen = models.ImageField(upload_to='salones', null=True, blank=True)
 
     class Meta:
         verbose_name = 'salon'
