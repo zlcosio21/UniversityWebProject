@@ -10,12 +10,9 @@ from validators import *
 @login_required
 def perfil_usuario(request):
 
-    user = User.objects.get(username=request.user)
-    tipo_usuario = user.groups.all()
-
     try:
 
-        datos_extra = DatosExtra.objects.get(user=user)
+        datos_extra = DatosExtra.objects.get(user=request.user)
         info_usuario = datos_extra.info_user
         telefono = datos_extra.numero_telefono
 
@@ -23,7 +20,7 @@ def perfil_usuario(request):
         info_usuario = "Sin agregar"
         telefono = "Sin agregar"
 
-    return render(request, "perfil_usuario/perfil_usuario.html", {"tipo_usuario":tipo_usuario, "info_usuario":info_usuario, "telefono":telefono})
+    return render(request, "perfil_usuario/perfil_usuario.html", {"info_usuario":info_usuario, "telefono":telefono})
 
 @login_required
 def editar_perfil(request):
@@ -37,13 +34,13 @@ def editar_perfil(request):
 
         user = request.user
         password_valida = user.check_password(password)
+        username_exist = User.objects.filter(username=new_username).exclude(pk=user.pk).exists()
 
         characters_error(request, new_username)
         username_existe(request, new_username)
-        password_novalida(request, password)
-            
+        password_novalida(request, password)   
 
-        if password_valida and not username_existe:
+        if password_valida and not username_exist:
             user.username = new_username
             user.email = new_email
             user.save()
