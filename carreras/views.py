@@ -70,22 +70,16 @@ def especializarse(request, materia_nombre):
             messages.error(request, f"Ya te encuentras especializado en la materia {nombre_materia}.", extra_tags="ya_especializado_error")
 
             return redirect("inicio")
-        
-        elif not materia_especializada:
 
-            messages.error(request, f"Lastimosamente no hay vacantes de especializacion para la materia {materia.nombre}, intente mas tarde.", extra_tags="no_salones")
-
-            return redirect("inicio")
-        
         else:
 
             for salon in salones:
-                salon.profesor = user
+                salon.profesor = request.user
                 salon.save()
 
             salones_profesor = Salon.objects.filter(profesor=user)
 
             return render(request, "carreras/especializado.html", {"salones_profesor":salones_profesor, "materia":materia})
-        
+
     except Materia.DoesNotExist:
         return redirect('inicio')
