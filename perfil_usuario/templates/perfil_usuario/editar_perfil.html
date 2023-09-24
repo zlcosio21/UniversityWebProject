@@ -60,10 +60,11 @@
                   <div class="col-md-8 col-lg-9">
                     <input name="username" type="text" class="form-control" id="fullName">
                     {% for message in messages %}
-                      {% if 'username_error' in message.tags %}<div class="text-danger" style="margin-left: 10px; font-size: 16px;">
+                      {% if 'characters_error' in message.tags %}<div class="text-danger" style="margin-left: 10px; font-size: 16px;">
                         {{message}}  </div>
                       {% endif %}
                     {% endfor %}
+                    
                     {% for message in messages %}
                       {% if 'username_existe_error' in message.tags %}<div class="text-danger" style="margin-left: 10px; font-size: 16px;">
                         {{message}}  </div>

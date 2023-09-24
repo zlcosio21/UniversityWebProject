@@ -35,8 +35,14 @@
                           <input type="text" name="username" class="form-control" id="yourUsername" required>
                       </div>
                         {% for message in messages %}
-                          {% if 'username_error' in message.tags %}<div class="text-danger" style="margin-left: 10px; font-size: 16px;">
-                              {{message}}  </div>
+                          {% if 'username_existe_error' in message.tags %}<div class="text-danger" style="margin-left: 10px; font-size: 16px;">
+                            {{message}}  </div>
+                          {% endif %}
+                        {% endfor %}
+
+                        {% for message in messages %}
+                          {% if 'characters_error' in message.tags and forloop.first %}<div class="text-danger" style="margin-left: 10px; font-size: 16px;">
+                            {{message}}  </div>
                           {% endif %}
                         {% endfor %}
                     </div>
@@ -51,7 +57,7 @@
                       <label for="yourPassword" class="form-label">Contraseña</label>
                       <input type="password" name="password" class="form-control" id="yourPassword" required>
                       {% for message in messages %}
-                        {% if 'error_characters' in message.tags %} <div class="text-danger" style="margin-left: 10px; font-size: 16px;"> 
+                        {% if 'characters_error' in message.tags and forloop.first %} <div class="text-danger" style="margin-left: 10px; font-size: 16px;"> 
                           {{ message }}</div>
                         {% endif %}
                       {% endfor %}
