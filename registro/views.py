@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.models import User, Group
 from django.contrib.auth import login
 from django.contrib import messages
+from validators import *
 
 # Create your views here.
 def registro(request):
@@ -12,17 +13,11 @@ def registro(request):
         password_confirm = request.POST.get("password_confirm")
         tipo_usuario = request.POST.get("tipo_usuario")
 
-        if len(username) < 8:
-            messages.error(request, "Debe contener minimo 8 caracteres", extra_tags="username_error")
+        characters_error(request, username, password, password_confirm)
+        username_existe(request, username)
+        equals_error(request, password, password_confirm)
 
-        if password != password_confirm:     
-            messages.error(request, "Las contraseñas deben ser iguales. Ingrese nuevamente", extra_tags="password_error")
-
-        if len(password) < 8 and len(password_confirm) < 8:
-            messages.error(request, "La contraseña debe tener minimo 8 caracteres", extra_tags="error_characters")
-
-
-        if len(username) >= 8  and password == password_confirm:
+        if len(username) >= 8  and (password == password_confirm and len(password) > 8 and len(password_confirm) > 8) :
 
             user = User.objects.create_user(username=username, email=email, password=password)
             user.save()
