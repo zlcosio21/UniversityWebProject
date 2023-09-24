@@ -17,7 +17,7 @@ def registro(request):
         username_existe(request, username)
         equals_error(request, password, password_confirm)
 
-        if len(username) >= 8  and (password == password_confirm and len(password) > 8 and len(password_confirm) > 8) :
+        if len(username) >= 8  and (password == password_confirm and len(password) >= 8 and len(password_confirm) >= 8) :
 
             user = User.objects.create_user(username=username, email=email, password=password)
             user.save()

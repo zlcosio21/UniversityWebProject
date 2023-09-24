@@ -18,7 +18,7 @@ def password_novalida(request, password_actual):
 
     password_valida = user.check_password(password_actual)
     if not password_valida:
-        return messages.error(request, "La contraña actual es incorrecta, ingrese nuevamente", extra_tags="password_novalida")
+        return messages.error(request, "La contraseña actual es incorrecta, ingrese nuevamente", extra_tags="password_novalida")
     
 def equals_error(request, password, password_confirm):
 
