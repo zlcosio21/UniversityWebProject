@@ -23,14 +23,13 @@ class Semestre(models.Model):
     
 class Materia(models.Model):
     nombre = models.CharField(max_length=50, unique=True, null=False)
-    semestre  = models.ForeignKey(Semestre, on_delete=models.CASCADE)
     
     class meta:
         verbose_name = 'materia'
         verbose_name_plural = 'materias'
 
     def __str__(self):
-        return f"{self.nombre} - Carrera {self.semestre.carrera.nombre} - Semestre {self.semestre.numero}"
+        return f"{self.nombre}"
     
 
 class Salon(models.Model):
