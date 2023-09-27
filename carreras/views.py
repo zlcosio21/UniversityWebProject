@@ -9,7 +9,6 @@ def matricular_carrera(request, carrera_nombre):
         carrera = Carrera.objects.get(nombre__iexact=carrera_nombre)
         estudiantes_semestre = Semestre.objects.get(carrera=carrera, numero=1)
 
-        materias_carrera = Materia.objects.filter(semestre__carrera=carrera, semestre__numero=1)
         salones_carrera = Salon.objects.filter(semestre__carrera=carrera, semestre__numero=1)
 
         user = request.user
@@ -19,7 +18,7 @@ def matricular_carrera(request, carrera_nombre):
 
         if carrera_matriculada:
             
-            return render(request, "carreras/carrera.html", {"carrera_nombre": carrera_nombre, "materias_carrera":materias_carrera, "salones_carrera":salones_carrera})
+            return render(request, "carreras/carrera.html", {"carrera_nombre": carrera_nombre, "salones_carrera":salones_carrera})
         
         elif ya_esta_matriculado:
 
@@ -36,9 +35,7 @@ def matricular_carrera(request, carrera_nombre):
             estudiantes_semestre.estudiantes.add(user)
             estudiantes_semestre.save()
 
-            return render(request, "carreras/carrera.html", {"carrera_nombre": carrera_nombre, "materias_carrera":materias_carrera, "salones_carrera":salones_carrera})
-        
-        
+            return render(request, "carreras/carrera.html", {"carrera_nombre": carrera_nombre, "salones_carrera":salones_carrera})
         
     except carrera.DoesNotExist:
         return redirect('inicio')
