@@ -8,5 +8,8 @@ class DatosExtra(models.Model):
     img_perfil = models.ImageField(upload_to='perfil_usuario', null=True)
     numero_telefono = models.CharField(max_length=20, null=True)
 
+    created = models.DateTimeField(auto_now_add=True)
+    updated = models.DateTimeField(auto_now=True)
+
     def __str__(self):
         return f" Datos extras del user {self.user}"
