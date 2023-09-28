@@ -6,10 +6,6 @@ class Carrera(models.Model):
     nombre = models.CharField(unique=True, max_length=50, null=False)
     estudiantes = models.ManyToManyField(User, related_name='carreras_matriculadas', blank=True, limit_choices_to={'groups__name': 'Estudiante'})
 
-    class meta:
-        verbose_name = 'carrera'
-        verbose_name_plural = 'carreras'
-
     def __str__(self):
         return self.nombre
     
@@ -23,10 +19,6 @@ class Semestre(models.Model):
     
 class Materia(models.Model):
     nombre = models.CharField(max_length=50, unique=True, null=False)
-    
-    class meta:
-        verbose_name = 'materia'
-        verbose_name_plural = 'materias'
 
     def __str__(self):
         return f"{self.nombre}"
