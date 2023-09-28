@@ -41,7 +41,7 @@
                         {% endfor %}
 
                         {% for message in messages %}
-                          {% if 'characters_error' in message.tags and forloop.first %}<div class="text-danger" style="margin-left: 10px; font-size: 16px;">
+                          {% if 'username_characters_error' in message.tags and forloop.first %}<div class="text-danger" style="margin-left: 10px; font-size: 16px;">
                             {{message}}  </div>
                           {% endif %}
                         {% endfor %}

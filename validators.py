@@ -1,5 +1,10 @@
 from django.contrib import messages
 from django.contrib.auth.models import User
+ 
+def username_characters_error(request, *username):
+    for user in username:
+        if len(user) < 8:
+            messages.error(request, "Debe contener minimo 8 caracteres", extra_tags="username_characters_error")
 
 def characters_error(request, *args):
     for var in args:

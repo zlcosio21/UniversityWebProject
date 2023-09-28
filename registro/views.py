@@ -13,7 +13,8 @@ def registro(request):
         password_confirm = request.POST.get("password_confirm")
         tipo_usuario = request.POST.get("tipo_usuario")
 
-        characters_error(request, username, password, password_confirm)
+        username_characters_error(request, username)
+        characters_error(request, password, password_confirm)
         username_existe(request, username)
         equals_error(request, password, password_confirm)
 
