@@ -6,6 +6,12 @@ from validators import *
 
 # Create your views here.
 def registro(request):
+    grupo_estudiante, created = Group.objects.get_or_create(name = "Estudiante")
+    grupo_profesor, created = Group.objects.get_or_create(name = "Profesor")
+
+    grupo_estudiante = Group.objects.get(name ="Estudiante")
+    grupo_profesor = Group.objects.get(name = "Profesor")
+
     if request.method == "POST":
         username = request.POST.get("username")
         email = request.POST.get("email")
@@ -18,7 +24,9 @@ def registro(request):
         username_existe(request, username)
         equals_error(request, password, password_confirm)
 
-        if len(username) >= 8  and (password == password_confirm and len(password) >= 8 and len(password_confirm) >= 8) :
+        existe = User.objects.filter(username=username).exclude(pk=user.pk).exists()
+
+        if len(username) >= 8  and (password == password_confirm and len(password) >= 8 and len(password_confirm) >= 8) and existe:
 
             user = User.objects.create_user(username=username, email=email, password=password)
             user.save()
