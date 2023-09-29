@@ -37,8 +37,9 @@ def matricular_carrera(request, carrera_nombre):
 
             return render(request, "carreras/carrera.html", {"carrera_nombre": carrera_nombre, "salones_carrera":salones_carrera})
         
-    except carrera.DoesNotExist:
-        return redirect('inicio')
+    except Carrera.DoesNotExist:
+        messages.error(request, f"Error al matricular a la carrera {carrera_nombre.capitalize()}, vuelva a intentarlo mas tarde.", extra_tags="error_matricular")
+        return redirect("inicio")
     
 
 def especializarse(request, materia_nombre):
