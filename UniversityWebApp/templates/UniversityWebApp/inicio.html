@@ -24,6 +24,12 @@
         {% endif %}
       {% endfor %}
 
+      {% for message in messages %}
+        {% if 'error_matricular' in message.tags %} <div class="text-danger" style="text-align: center;"> 
+          {{ message }}</div>
+        {% endif %}
+      {% endfor %}
+
         <section id="posts" class="section-with-bg">
           <div class="row" data-aos="fade-up" data-aos-delay="100">
             {% for post in post_estudiante %}
@@ -34,7 +40,7 @@
                   </div>
                     <h3>{{post.titulo}}</h3>
                     <p style="color: white;">{{post.contenido}}</p>
-                    <a href="{% url 'matricular_carrera' post.carrera.nombre %}"><p style="color: white;">Matricular</p></a><br>
+                    <a href="{% url 'matricular_carrera' post.titulo %}"><p style="color: white;">Matricular</p></a><br>
                 </div>
               </div>
             {% endfor %}
