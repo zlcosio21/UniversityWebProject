@@ -10,8 +10,8 @@ def inicio(request):
     tipo_usuario_estudiante = TipoUsuario.objects.get(nombre = "Estudiante")
     tipo_usuario_profesor = TipoUsuario.objects.get(nombre = "Profesor")
     
-    post_estudiante = Post.objects.filter(categoria = tipo_usuario_estudiante)
-    post_profesor = Post.objects.filter(categoria = tipo_usuario_profesor)
+    post_estudiante = Post.objects.filter(tipo_usuario = tipo_usuario_estudiante)
+    post_profesor = Post.objects.filter(tipo_usuario = tipo_usuario_profesor)
     
     user = request.user
 
