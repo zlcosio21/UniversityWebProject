@@ -27,3 +27,4 @@ perfil_usuario/migrations
 perfil_usuario/__pycache__
 
 __pycache__
+.env
