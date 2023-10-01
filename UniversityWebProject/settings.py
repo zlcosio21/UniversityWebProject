@@ -17,7 +17,7 @@ import os
 
 EMAIL = os.getenv("EMAIL")
 PASSWORD = os.getenv("PASSWORD")
-PASSWORD_DJANDO = os.getenv("PASSWORD_DJANGO")
+PASSWORD_DJANGO = os.getenv("PASSWORD_DJANGO")
 PASSWORD_DB = os.getenv("PASSWORD_DB")
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -28,7 +28,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = PASSWORD_DJANDO
+SECRET_KEY = PASSWORD_DJANGO
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
