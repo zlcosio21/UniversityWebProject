@@ -14,6 +14,9 @@ from pathlib import Path
 from django.conf import settings
 from django.conf.urls.static import static 
 import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 EMAIL = os.getenv("EMAIL")
 PASSWORD = os.getenv("PASSWORD")
