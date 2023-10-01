@@ -13,6 +13,12 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 from pathlib import Path
 from django.conf import settings
 from django.conf.urls.static import static 
+import os
+
+EMAIL = os.getenv("EMAIL")
+PASSWORD = os.getenv("PASSWORD")
+PASSWORD_DJANDO = os.getenv("PASSWORD_DJANGO")
+PASSWORD_DB = os.getenv("PASSWORD_DB")
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -22,7 +28,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-1ou9g_qfh7xi5bae8n=iwq6u7by)w=(mg7j@!g&_a$oyr(d13h'
+SECRET_KEY = PASSWORD_DJANDO
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -86,7 +92,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'universidad',
         'USER': 'root',
-        'PASSWORD': 'minato21',
+        'PASSWORD': PASSWORD_DB,
         'HOST': 'localhost',
         'PORT': '3306',
     }
@@ -131,6 +137,14 @@ STATIC_URL = 'static/'
 
 MEDIA_URL = 'media/'
 MEDIA_ROOT = BASE_DIR / 'media'
+
+# Envio de mails
+EMAIL_BACKEND  = "django.core.mail.backends.smtp.EmailBackend"
+EMAIL_HOST = "smtp.gmail.com"
+EMAIL_USE_TLS = True
+EMAIL_PORT = 587
+EMAIL_HOST_USER = EMAIL
+EMAIL_HOST_PASSWORD = PASSWORD
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
