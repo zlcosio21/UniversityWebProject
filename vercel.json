@@ -1,13 +1,23 @@
 {
-    "builds": [{
+    "builds": [
+      {
         "src": "UniversityWebProject/wsgi.py",
         "use": "@vercel/python",
-        "config": { "maxLambdaSize": "15mb", "runtime": "python3.11.3" }
-    }],
-    "routes": [
-        {
-            "src": "/(.*)",
-            "dest": "UniversityWebProject/wsgi.py"
+        "config": {
+          "maxLambdaSize": "15mb",
+          "runtime": "python3.11.3",
+          "env": {
+            "MYSQLCLIENT_CFLAGS": "-I/path/to/mysql/include",
+            "MYSQLCLIENT_LDFLAGS": "-L/path/to/mysql/lib -lmysqlclient"
+          }
         }
+      }
+    ],
+    "routes": [
+      {
+        "src": "/(.*)",
+        "dest": "UniversityWebProject/wsgi.py"
+      }
     ]
-}
+  }
+  
