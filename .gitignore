@@ -30,3 +30,4 @@ __pycache__
 .env
 static/
 db.sqlite3
+.venv/
