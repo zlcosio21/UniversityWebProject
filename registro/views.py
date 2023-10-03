@@ -24,9 +24,10 @@ def registro(request):
         username_existe(request, username)
         equals_error(request, password, password_confirm)
 
+        user = request.user
         existe = User.objects.filter(username=username).exclude(pk=user.pk).exists()
 
-        if len(username) >= 8  and (password == password_confirm and len(password) >= 8 and len(password_confirm) >= 8) and existe:
+        if len(username) >= 8  and (password == password_confirm and len(password) >= 8 and len(password_confirm) >= 8) and not existe:
 
             user = User.objects.create_user(username=username, email=email, password=password)
             user.save()
