@@ -15,29 +15,30 @@ from django.conf import settings
 from django.conf.urls.static import static 
 import os
 from dotenv import load_dotenv
+import dj_database_url
 
 load_dotenv()
 
 EMAIL = os.getenv("EMAIL")
 PASSWORD = os.getenv("PASSWORD")
-PASSWORD_DJANGO = os.getenv("PASSWORD_DJANGO")
 PASSWORD_DB = os.getenv("PASSWORD_DB")
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+load_dotenv(os.path.join(BASE_DIR/".eVar", ".env"))
 
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = PASSWORD_DJANGO
+SECRET_KEY = os.environ.get("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.environ.get("DEBUG")
 
-ALLOWED_HOSTS = ['.vercel.app']
-
+ALLOWED_HOSTS = ["127.0.0.1", "localhost"]
+ALLOWED_HOSTS += os.environ.get("ALLOWED_HOSTS").split()
 
 # Application definition
 
@@ -91,14 +92,9 @@ WSGI_APPLICATION = 'UniversityWebProject.wsgi.application'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'universidad',
-        'USER': 'root',
-        'PASSWORD': PASSWORD_DB,
-        'HOST': 'localhost',
-        'PORT': '3306',
-    }
+    'default': dj_database_url.config(
+        default = "sqlite:///" + os.path.join(BASE_DIR, "db.sqlite3") 
+    )
 }
 
 
@@ -138,8 +134,13 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
-MEDIA_URL = 'media/'
-MEDIA_ROOT = BASE_DIR / 'media'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'UniversityWebApp/static')
+]
+
+"""MEDIA_URL = 'media/'
+MEDIA_ROOT = BASE_DIR / 'media'"""
 
 # Envio de mails
 EMAIL_BACKEND  = "django.core.mail.backends.smtp.EmailBackend"
