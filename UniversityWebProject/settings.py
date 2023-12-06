@@ -14,10 +14,13 @@ from pathlib import Path
 from django.conf import settings
 from django.conf.urls.static import static 
 import os
+<<<<<<< HEAD
 from dotenv import load_dotenv
 import dj_database_url
 
 load_dotenv()
+=======
+>>>>>>> parent of f89c4ce (Cargando las variables)
 
 EMAIL = os.getenv("EMAIL")
 PASSWORD = os.getenv("PASSWORD")
