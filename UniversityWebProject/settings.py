@@ -11,37 +11,29 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
-from django.conf import settings
-from django.conf.urls.static import static 
 import os
-<<<<<<< HEAD
 from dotenv import load_dotenv
-import dj_database_url
 
+# Email and password private
 load_dotenv()
-=======
->>>>>>> parent of f89c4ce (Cargando las variables)
-
 EMAIL = os.getenv("EMAIL")
 PASSWORD = os.getenv("PASSWORD")
-PASSWORD_DB = os.getenv("PASSWORD_DB")
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-load_dotenv(os.path.join(BASE_DIR/".eVar", ".env"))
 
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get("SECRET_KEY")
+SECRET_KEY = 'django-insecure-0y36i@y*e3pcz+q5m3un5z#zli*@lt30q=tti0zddeek8nmsu0'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ.get("DEBUG")
+DEBUG = True
 
-ALLOWED_HOSTS = ["127.0.0.1", "localhost"]
-ALLOWED_HOSTS += os.environ.get("ALLOWED_HOSTS").split()
+ALLOWED_HOSTS = []
+
 
 # Application definition
 
@@ -95,9 +87,14 @@ WSGI_APPLICATION = 'UniversityWebProject.wsgi.application'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
 DATABASES = {
-    'default': dj_database_url.config(
-        default = "sqlite:///" + os.path.join(BASE_DIR, "db.sqlite3") 
-    )
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'university',
+        'USER': 'root',
+        'PASSWORD': 'minato21',
+        'HOST': 'localhost',
+        'PORT': '3306',
+    }
 }
 
 
